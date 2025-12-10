@@ -1,31 +1,21 @@
-# Crate `paddleocr`
+# Crate `paddleocr-json-rs`
 
-[![](https://img.shields.io/crates/v/paddleocr.svg)](https://crates.io/crates/paddleocr/)
+[![](https://img.shields.io/crates/v/paddleocr.svg)](https://crates.io/crates/paddleocr-json-rs/)
+[![Documentation](https://docs.rs/paddleocr-json-rs/badge.svg)](https://docs.rs/paddleocr-json-rs/)
+[![License](https://img.shields.io/crates/l/paddleocr-json-rs)](LICENSE)
 
-A simple wrapper for [`hiroi-sora/PaddleOCR-json`](https://github.com/hiroi-sora/PaddleOCR-json).
+Rust binding for [PaddleOCR-json](https://github.com/hiroi-sora/PaddleOCR-json), a powerful offline OCR tool.
 
-## Usage
+## 致谢原作者
 
-```rust
-let mut p = paddleocr::Ppocr::new(
-    PathBuf::from(".../PaddleOCR-json.exe"), // path to binary
-    Default::default(), // language config_path, default `zh_CN`
-)
-.unwrap(); // initialize
+本项目是基于 [paddleocr](https://github.com/OverflowCat/paddleocr) 的延续。
 
-let now = std::time::Instant::now(); // benchmark
-{
-    // OCR files
-    println!("{}", p.ocr(Path::new(".../test1.png").into()).unwrap());
-    println!("{}", p.ocr(Path::new(".../test2.png").into()).unwrap());
-    println!("{}", p.ocr(Path::new(".../test3.png").into()).unwrap());
+## 关于 About
 
-    // OCR clipboard
-    println!("{}", p.ocr_clipboard().unwrap());    
-}
-println!("Elapsed: {:.2?}", now.elapsed());
-```
+`paddleocr-json-rs`为 PaddleOCR-json 提供了简单高效的 Rust 接口，方便你将 OCR 功能集成到 Rust 应用中。
 
-Use `ocr_and_parse` to get structured results.
+## 特性 Features
 
-By enabling the `bytes` feature, you can pass image data as a byte array (`AsRef<[u8]>`).
+- 用于OCR作的简单API。
+- 支持文件路径输入
+- 带有 `ocr_and_parse` 的结构化结果解析

@@ -1,18 +1,18 @@
 [package]
-name = "paddleocr"
-version = "0.4.1"
+name = "paddleocr-json-rs"
+version = "1.0.0"
 edition = "2021"
 license = "MIT"
 description = "A simple Rust wrapper for PaddleOCR-JSON."
-homepage = "https://github.com/OverflowCat/paddleocr"
-repository = "https://github.com/OverflowCat/paddleocr"
+homepage = "https://github.com/zhoushi1/paddleocr-json-rs"
+repository = "https://github.com/zhoushi1/paddleocr-json-rs"
 readme = "README.md"
 categories = ["computer-vision", "external-ffi-bindings"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-base64 = { version = "0.21.4", optional = true }
+base64 = { version = "0.22.1", optional = true }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = { version = "1.0" }
 
@@ -24,4 +24,4 @@ doctest = false
 bytes = ["dep:base64"]
 
 [dev-dependencies]
-paddleocr = { path = ".", features = ["bytes"] }
+paddleocr-json-rs = { path = ".", features = ["bytes"] }

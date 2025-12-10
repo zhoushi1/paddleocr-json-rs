@@ -1,13 +1,13 @@
-use std::io::Result as IoResult;
-use std::io::{BufRead, BufReader, Write};
-use std::path::Path;
-use std::process;
-use std::{error::Error, fmt, path::PathBuf};
-
 use serde::{
     Deserialize, // for `ocr_and_parse`
     Serialize,   // for `WriteDict`
 };
+use std::io::Result as IoResult;
+use std::io::{BufRead, BufReader, Write};
+use std::os::windows::process::CommandExt;
+use std::path::Path;
+use std::process;
+use std::{error::Error, fmt, path::PathBuf};
 
 #[derive(Debug, Clone)]
 pub struct OsNotSupportedError;
@@ -20,6 +20,8 @@ impl Error for OsNotSupportedError {}
 
 type Point = [usize; 2];
 
+const CREATE_NO_WINDOW_FLAG: u32 = 0x08000000;
+
 #[derive(Deserialize, Debug, Clone)]
 #[serde(untagged)]
 pub enum OcrRec {
@@ -27,7 +29,7 @@ pub enum OcrRec {
     Message { code: u32, data: String },
 }
 
-#[derive(Deserialize, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct ContentData {
     #[serde(rename(deserialize = "box"))]
     pub rect: Rectangle,
@@ -145,6 +147,7 @@ impl Ppocr {
             .stdout(process::Stdio::piped())
             .stderr(process::Stdio::piped())
             .stdin(process::Stdio::piped())
+            .creation_flags(CREATE_NO_WINDOW_FLAG)
             .spawn()?;
 
         let mut p = Ppocr { exe_path, process };
