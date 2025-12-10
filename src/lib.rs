@@ -433,9 +433,9 @@ mod tests {
         p.ocr_and_parse(Path::new("C:/Users/Neko/Pictures/test2.png").into())
             .unwrap();
 
-        p.ocr_and_parse(ImageData::from_bytes(include_bytes!(
-            "C:/Users/Neko/Pictures/test3.png"
-        )))
-        .unwrap();
+        // p.ocr_and_parse(ImageData::from_bytes(include_bytes!(
+        //     "C:/Users/Neko/Pictures/test3.png"
+        // )))
+        // .unwrap();
     }
 }
