@@ -1,8 +1,7 @@
 # Crate `paddleocr-json-rs`
 
-[![](https://img.shields.io/crates/v/paddleocr.svg)](https://crates.io/crates/paddleocr-json-rs/)
+[![](https://img.shields.io/crates/v/paddleocr-json-rs.svg)](https://crates.io/crates/paddleocr-json-rs/)
 [![Documentation](https://docs.rs/paddleocr-json-rs/badge.svg)](https://docs.rs/paddleocr-json-rs/)
-[![License](https://img.shields.io/crates/l/paddleocr-json-rs)](LICENSE)
 
 Rust binding for [PaddleOCR-json](https://github.com/hiroi-sora/PaddleOCR-json), a powerful offline OCR tool.
 
